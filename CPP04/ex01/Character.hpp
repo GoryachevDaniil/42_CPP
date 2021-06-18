@@ -24,11 +24,8 @@
 # define	B_PURPLE	"\033[1;35m"
 # define	B_CYAN		"\033[1;36m"
 # define	B_WHITE		"\033[1;37m"
-
 #include "AWeapon.hpp"
 #include "Enemy.hpp"
-// #include "PowerFist.hpp"
-// #include "PlasmaRifle.hpp"
 
 class Character
 {

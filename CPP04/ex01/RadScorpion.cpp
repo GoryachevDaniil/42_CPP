@@ -1,44 +1,42 @@
 #include "RadScorpion.hpp"
 
 RadScorpion::RadScorpion():
-	Enemy()
-{
+	Enemy(){
 	hp_ = 80;
 	type_ = "RadScorpion";
-	std::cout << COLOR_GREEN << "* click click click *" << COLOR_RESET << std::endl;
-}
+	upon_death_ = "* SPROTCH *";
+	std::cout << COLOR_GREEN "* click click click *" COLOR_RESET << std::endl;
+};
 
 RadScorpion::RadScorpion(int hp, std::string const & type):
-	Enemy(hp, type)
-{
+	Enemy(hp, type){
 	hp_ = 80;
 	type_ = "RadScorpion";
-	std::cout << COLOR_GREEN << "* click click click *" << COLOR_RESET << std::endl;
+	upon_death_ = "* SPROTCH *";
+	std::cout << COLOR_GREEN "* click click click *" COLOR_RESET << std::endl;
 };
 
-RadScorpion::RadScorpion(const RadScorpion &copy)
-{
+RadScorpion::RadScorpion(const RadScorpion &copy){
 	hp_ = copy.hp_;
 	type_ = copy.type_;
-	std::cout << COLOR_GREEN "Copy constructor called" COLOR_RESET << std::endl;
+	upon_death_ = copy.upon_death_;
 };
 
-RadScorpion::~RadScorpion()
-{
-	std::cout << COLOR_RED << "* SPROTCH *" << COLOR_RESET << std::endl;
-}
+RadScorpion::~RadScorpion(){};
 
-RadScorpion& RadScorpion::operator=(const RadScorpion &object)
-{
+RadScorpion& RadScorpion::operator=(const RadScorpion &object){
 	std::cout << COLOR_MAGENTA "Assignation operator called" COLOR_RESET << std::endl;
     if (this == &object)
         return *this;
 	hp_ = object.hp_;
 	type_ = object.type_;
+	upon_death_ = object.upon_death_;
     return (*this);
 };
 
-void RadScorpion::takeDamage(int damage)
-{
-	// Overloads takeDamage to take 3 less damage points than normal (Yeah, they’re kinda strong, these guys.)
-}
+void RadScorpion::takeDamage(int damage){
+	if(damage > 0)
+		hp_ -= damage;
+	if(getHP() < 0)
+		std::cout << upon_death_ << std::endl;
+};

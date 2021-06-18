@@ -25,8 +25,6 @@
 # define	B_CYAN		"\033[1;36m"
 # define	B_WHITE		"\033[1;37m"
 
-
-
 class AWeapon
 {
 	protected:
