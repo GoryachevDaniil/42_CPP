@@ -1,6 +1,6 @@
 #include "ShrubberyCreationForm.hpp"
 
-std::string const ShrubberyCreationForm::_tree[7] = {
+std::string const ShrubberyCreationForm::tree_[7] = {
 "         @@@         "
 "       @ | | @       "
 "     @  \\ //  @     "
