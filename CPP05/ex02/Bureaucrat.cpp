@@ -65,7 +65,7 @@ void		Bureaucrat::signForm(std::string form, int flag)
 			<< getGrade() << " " COLOR_RESET;
 };
 
-void		Bureaucrat::executeForm(Form const &form)
+void		Bureaucrat::executeForm(Form const &form) const
 {
-	std::cout << getName() << " executes " << form.getName() << std::endl;
+	std::cout << COLOR_GREEN << getName() << " executes " << form.getName() << "!" << COLOR_RESET<< std::endl;
 };

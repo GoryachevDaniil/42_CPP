@@ -1,6 +1,6 @@
 #include "Form.hpp"
 
-Form::Form(std::string name, int signed_grade, int execute_grade):
+Form::Form(std::string const name, int const signed_grade, int const execute_grade):
 	name_(name), signed_indicator_(false), signed_grade_(signed_grade), execute_grade_(execute_grade)
 {
 	if (signed_grade_ < 1 || execute_grade_ < 1)
@@ -25,10 +25,7 @@ Form::Form(const Form &copy):
 Form& Form::operator=(const Form &object){
     if (this == &object)
         return *this;
-	name_ = object.name_;
-	signed_indicator_ = object.signed_indicator_;
-	signed_grade_ = object.signed_grade_;
-	execute_grade_ = object.execute_grade_;
+	this->signed_indicator_ = object.signed_indicator_;
     return (*this);
 };
 
@@ -42,7 +39,7 @@ std::ostream& operator<<(std::ostream& out, const Form &input)
 
 Form::~Form(){};
 
-std::string	Form::getName() const{return (this->name_);};
+std::string const &Form::getName() const{return (this->name_);};
 
 int			Form::getSignedIndicator() const{return (this->signed_indicator_);};
 

@@ -46,7 +46,7 @@ public:
 	void		gradeDown(int grade);
 	class		GradeTooHighException : public std::exception {
 		const char* what() const throw(){
-			return "Grade too hight!";
+			return "Grade too high!";
 		};
 	};
 	class		GradeTooLowException : public std::exception {
@@ -55,7 +55,7 @@ public:
 		};
 	};
 	void		signForm(std::string form, int flag);
-	void		executeForm(Form const &form);
+	void		executeForm(Form const &form) const;
 };
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat &input);

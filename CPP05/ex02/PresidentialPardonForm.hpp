@@ -9,24 +9,10 @@ private:
 public:
 	PresidentialPardonForm(std::string const &target);
 	PresidentialPardonForm(PresidentialPardonForm const &copy);
-	Form& operator=(const Form &object);
+	PresidentialPardonForm& operator=(const PresidentialPardonForm &object);
 	virtual ~PresidentialPardonForm();
-	void	execute(Bureaucrat const & executor);
+	void	execute(Bureaucrat const & executor) const;
 };
 
-PresidentialPardonForm::PresidentialPardonForm(std::string const &target):
-	Form("PresidentialPardon Form", 25, 5), target_(target) {};
-
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &copy):
-	Form(copy), target_(copy.target_) {};
-
-
-PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm &object)
-{
-	(void)object;
-	return (*this);
-}
-
-PresidentialPardonForm::~PresidentialPardonForm(){};
 
 #endif

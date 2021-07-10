@@ -3,22 +3,21 @@
 class Form;
 #include "Bureaucrat.hpp"
 
-class Form
-{
+
+class Form {
 private:
-	std::string	name_;
-	bool		signed_indicator_;
-	int			signed_grade_;
-	int			execute_grade_;
+	Form();
+protected:
+	std::string const	name_;
+	bool				signed_indicator_;
+	int const 			signed_grade_;
+	int const			execute_grade_;
+
 public:
-	Form(std::string name, int signed_grade, int execute_grade);
-	Form(const Form &copy);
-	Form& operator=(const Form &object);
-	~Form();
-	std::string	getName() const;
-	int			getSignedIndicator() const;
-	int			getSignedGrade() const;
-	int			getExecuteGrade() const;
+	Form(std::string const name, int const signed_grade, int const execute_grade_);
+	Form(Form const &copy);
+	Form &operator=(Form const &object);
+	virtual ~Form();
 	class		GradeTooHighException : public std::exception {
 		const char* what() const throw(){
 			return "Grade too hight!";
@@ -31,14 +30,18 @@ public:
 	};
 	class		UnsignedFormException : public std::exception {
 		const char* what() const throw(){
-			return "Form don't signed!";
+			return "Unsigned form!";
 		};
 	};
-	void			beSigned(Bureaucrat &bureaucrat);
-	void			setSignedIndicator(bool indicator);
-	virtual void	execute(Bureaucrat const &executor) const;
+	std::string const	&getName() const;
+	int					getSignedIndicator() const;
+	int					getSignedGrade() const;
+	int					getExecuteGrade() const;
+	void				beSigned(Bureaucrat &bureaucrat);
+	void				setSignedIndicator(bool indicator);
+	virtual void		execute(Bureaucrat const &executor) const;
 };
 
-std::ostream& operator<<(std::ostream& out, const Form &input);
+std::ostream &operator << (std::ostream &out, Form const &form);
 
 #endif

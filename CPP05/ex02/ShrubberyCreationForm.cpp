@@ -1,20 +1,19 @@
 #include "ShrubberyCreationForm.hpp"
 
 std::string const ShrubberyCreationForm::tree_[7] = {
-"         @@@         "
-"       @ | | @       "
-"     @  \\ //  @     "
-"     \\  | |  //     "
-"       \\| |//       "
-"   @     | |         "
-"___(____/  \\________"};
+"         @           \n"
+"       @ | @         \n"
+"     @  \\ /   @      \n"
+"     \\  | |  /     \n"
+"       \\| |/       \n"
+"   @    | |         \n"
+"___(____/  \\________\n"};
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target):
 	Form("Shrubbery Form", 145, 137), target_(target) {};
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &copy):
 	Form(copy), target_(copy.target_) {};
-
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm &object)
 {
@@ -24,16 +23,16 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 ShrubberyCreationForm::~ShrubberyCreationForm(){};
 
-void	ShrubberyCreationForm::execute(Bureaucrat const & executor)
+void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
 	Form::execute(executor);
 	std::ofstream newfile;
-
 	newfile.open(target_ + "_shrubbery", std::ios::trunc);
 	if (!newfile.is_open())
 		throw ShrubberyCreationForm::OpenFileException();
 	for (int i = 0; i < 7; i++) {
-		newfile << ShrubberyCreationForm::tree_[i] << std::endl;
+		newfile << ShrubberyCreationForm::tree_[i];
 	}
 	newfile.close();
+	executor.executeForm(*this);
 };
