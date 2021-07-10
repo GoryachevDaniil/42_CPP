@@ -1,13 +1,13 @@
 #include "ShrubberyCreationForm.hpp"
 
 std::string const ShrubberyCreationForm::_tree[7] = {
-"         @@          "
-"       @ || @         "
-"        \\ // @       "
-"    @\\  | | //          "
-"       \\| |//@           "
-"         | |          "
-"        /  \\          "};
+"         @@@         "
+"       @ | | @       "
+"     @  \\ //  @     "
+"     \\  | |  //     "
+"       \\| |//       "
+"   @     | |         "
+"___(____/  \\________"};
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target):
 	Form("Shrubbery Form", 145, 137), target_(target) {};
@@ -29,11 +29,11 @@ void	ShrubberyCreationForm::execute(Bureaucrat const & executor)
 	Form::execute(executor);
 	std::ofstream newfile;
 
-	file.open(_target + "_shrubbery", std::ios::trunc);
-	if (!file.is_open())
+	newfile.open(target_ + "_shrubbery", std::ios::trunc);
+	if (!newfile.is_open())
 		throw ShrubberyCreationForm::OpenFileException();
 	for (int i = 0; i < 7; i++) {
-		file << ShrubberyCreationForm::_tree[i] << std::endl;
+		newfile << ShrubberyCreationForm::tree_[i] << std::endl;
 	}
-	file.close();
+	newfile.close();
 };
