@@ -12,7 +12,8 @@ Cast& Cast::operator=(const Cast &object){
 
 Cast::~Cast(){};
 
-void		Cast::castToChar(std::string arg){
+void		Cast::castToChar(std::string arg)
+{
 	std::cout << "Char: ";
 	try
 	{
@@ -28,7 +29,8 @@ void		Cast::castToChar(std::string arg){
 	}
 };
 
-void		Cast::castToInt(std::string arg){
+void		Cast::castToInt(std::string arg)
+{
 	std::cout << "Int: ";
 	try
 	{
@@ -40,7 +42,8 @@ void		Cast::castToInt(std::string arg){
 	}
 };
 
-void		Cast::castToFloat(std::string arg){
+void		Cast::castToFloat(std::string arg)
+{
 	std::cout << "Float: ";
 	try
 	{
@@ -53,7 +56,8 @@ void		Cast::castToFloat(std::string arg){
 
 };
 
-void		Cast::castToDouble(std::string arg){
+void		Cast::castToDouble(std::string arg)
+{
 	std::cout << "Double: ";
 	try
 	{
