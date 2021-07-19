@@ -1,7 +1,6 @@
 NAME	=	serialize
 
 SRCS	=	main.cpp\
-			Cast.cpp\
 
 ALLOBJS	=	${SRCS}
 

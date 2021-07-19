@@ -1,7 +1,6 @@
 NAME	=	identify
 
 SRCS	=	main.cpp\
-			Cast.cpp\
 
 ALLOBJS	=	${SRCS}
 
