@@ -12,7 +12,7 @@ Cast& Cast::operator=(const Cast &object){
 
 Cast::~Cast(){};
 
-void		Cast::castToChar(std::string arg)
+void	Cast::printResault(std::string arg)
 {
 	std::cout << "Char: ";
 	try
@@ -27,10 +27,6 @@ void		Cast::castToChar(std::string arg)
 	{
 		std::cout << "impossible." << std::endl;
 	}
-};
-
-void		Cast::castToInt(std::string arg)
-{
 	std::cout << "Int: ";
 	try
 	{
@@ -40,28 +36,67 @@ void		Cast::castToInt(std::string arg)
 	{
 		std::cout << "impossible." << std::endl;
 	}
-};
-
-void		Cast::castToFloat(std::string arg)
-{
 	std::cout << "Float: ";
 	try
 	{
-		std::cout << std::stof(arg) << "f" << std::endl;
+		std::size_t pos1 = arg.find("inf");
+		std::size_t pos2 = arg.find("nan");
+		if (pos1 < 100000 || pos2 < 100000)
+		{
+			float num = std::stof(arg);
+			std::cout << num << "f" << std::endl;
+		}
+		else
+		{
+			int flag = 0;
+			std::size_t pos = arg.find(".");
+			if (pos < 100000)
+			{
+				std::string str = arg.substr(pos + 1);
+				int size = str.size();
+				for (int i = 0; i < size; i++)
+					if (str[i] != '0')
+						flag = 1;
+			}
+			float num = std::stof(arg);
+			if (flag == 1)
+				std::cout << num << "f" << std::endl;
+			else
+				std::cout << num << ".0f" << std::endl;
+		}
 	}
 	catch (std::exception &e)
 	{
 		std::cout << "impossible." << std::endl;
 	}
-
-};
-
-void		Cast::castToDouble(std::string arg)
-{
 	std::cout << "Double: ";
 	try
 	{
-		std::cout << std::stof(arg) << std::endl;
+		std::size_t pos1 = arg.find("inf");
+		std::size_t pos2 = arg.find("nan");
+		if (pos1 < 100000 || pos2 < 100000)
+		{
+			float num = std::stof(arg);
+			std::cout << num << std::endl;
+		}
+		else
+		{
+			int flag = 0;
+			std::size_t pos = arg.find(".");
+			if (pos < 100000)
+			{
+				std::string str = arg.substr(pos + 1);
+				int size = str.size();
+				for (int i = 0; i < size; i++)
+					if (str[i] != '0')
+						flag = 1;
+			}
+			float num = std::stof(arg);
+			if (flag == 1)
+				std::cout << num << std::endl;
+			else
+				std::cout << num << ".0" << std::endl;
+		}
 	}
 	catch (std::exception &e)
 	{
@@ -69,10 +104,3 @@ void		Cast::castToDouble(std::string arg)
 	}
 };
 
-void		Cast::printResault(std::string arg)
-{
-	castToChar(arg);
-	castToInt(arg);
-	castToFloat(arg);
-	castToDouble(arg);
-};

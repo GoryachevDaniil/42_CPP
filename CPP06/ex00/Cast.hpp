@@ -35,10 +35,6 @@ public:
 	Cast &operator=(Cast const &object);
 	~Cast();
 	void		printResault(std::string arg);
-	void		castToChar(std::string arg);
-	void		castToInt(std::string arg);
-	void		castToFloat(std::string arg);
-	void		castToDouble(std::string arg);
 };
 
 #endif
