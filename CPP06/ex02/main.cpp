@@ -69,18 +69,21 @@ void identify(Base& p)
     {
         Base &a = dynamic_cast<A&>(p);
         std::cout << "Class A&" << std::endl;
+        a.~Base();
     }
     catch(std::bad_cast &e){(void)e;};
     try
     {
         Base &b = dynamic_cast<B&>(p);
         std::cout << "Class B&" << std::endl;
+        b.~Base();
     }
-    catch(std::bad_cast &e){(void)e;}; 
+    catch(std::bad_cast &e){(void)e;};
     try
     {
         Base &c = dynamic_cast<C&>(p);
         std::cout << "Class C&" << std::endl;
+        c.~Base();
     }
     catch(std::bad_cast &e){(void)e;};
 };
